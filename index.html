@@ -33,7 +33,7 @@ function init(){
 	stamen = new L.StamenTileLayer("watercolor");
 	
 	map.addLayer(stamen);
-	mapquest.addTo(map);
+	map.addLayer(mapquest);
 	mapquest.setOpacity(0.5);
 
 	L.control.attribution({position: 'bottomright'}).addAttribution("&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a>, <a href='http://maps.stamen.com'>Stamen</a>, <a href='http://maquest.com'>MapQuest</a>").setPrefix("").addTo(map);
