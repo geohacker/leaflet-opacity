@@ -12,6 +12,10 @@
 	#map {
 		height: 90%;
 	}
+	#slide {
+		margin-left: 50%;
+		margin-right: 50%;
+	}
 </style>
 </head>
 <body>
@@ -21,7 +25,7 @@
 <script>
 var mapquest, stamen;
 function init(){
-	var map = L.map('map').setView([0, 0], 3);
+	var map = L.map('map', {attributionControl: false}).setView([0, 0], 3);
 	var mapquestUrl = 'http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
 	subDomains = ['otile1','otile2','otile3','otile4'];
 	mapquest = new L.TileLayer(mapquestUrl, {maxZoom: 10, subdomains: subDomains});
@@ -31,6 +35,7 @@ function init(){
 	mapquest.addTo(map);
 	mapquest.setOpacity(0.5);
 
+	L.control.attribution({position: 'bottomright'}).addAttribution("&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a>, <a href='http://maps.stamen.com'>Stamen</a>, <a href='http://maquest.com'>MapQuest</a>").setPrefix("").addTo(map);
 
 }
     function updateOpacity(value) {
