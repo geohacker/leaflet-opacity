@@ -1,0 +1,44 @@
+<html>
+<title> Leaflet Layer Opacity </title>
+<head>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+	<script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.3"></script>
+<!--[if lte IE 8]>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+<![endif]-->
+
+<style type="text/css">
+	#map {
+		height: 90%;
+	}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<input id="slide" type="range" min="0" max="1" step="0.1" value="0.5" onchange="updateOpacity(this.value)">
+
+<script>
+var mapquest, stamen;
+function init(){
+	var map = L.map('map').setView([0, 0], 3);
+	var mapquestUrl = 'http://{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png',
+	subDomains = ['otile1','otile2','otile3','otile4'];
+	mapquest = new L.TileLayer(mapquestUrl, {maxZoom: 10, subdomains: subDomains});
+	stamen = new L.StamenTileLayer("watercolor");
+	
+	map.addLayer(stamen);
+	mapquest.addTo(map);
+	mapquest.setOpacity(0.5);
+
+
+}
+    function updateOpacity(value) {
+    	mapquest.setOpacity(value);
+    }
+
+	window.onload = init;
+
+</script>
+</body>
+</html>
